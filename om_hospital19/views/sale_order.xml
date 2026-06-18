@@ -1,0 +1,42 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<odoo>
+<!--    &lt;!&ndash; Sale Order Form Inherit &ndash;&gt;-->
+<!--    <record id="view_order_form_inherit" model="ir.ui.view">-->
+<!--        <field name="name">sale.order.inherited</field>-->
+<!--        <field name="model">sale.order</field>-->
+<!--        <field name="inherit_id" ref="sale.view_order_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='payment_term_id']" position="after">-->
+<!--                <field name="sale_description"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Sale Order List Inherit &ndash;&gt;-->
+<!--    <record id="view_order_list_inherit" model="ir.ui.view">-->
+<!--        <field name="name">sale.order.list.inherited</field>-->
+<!--        <field name="model">sale.order</field>-->
+<!--        <field name="inherit_id" ref="sale.view_quotation_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='partner_id']" position="after">-->
+<!--                <field name="sale_description"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Sale Appointments Menu &ndash;&gt;-->
+<!--    <menuitem id="menu_sale_appointment"-->
+<!--              name="Appointments"-->
+<!--              parent="sale.sale_order_menu"-->
+<!--              sequence="100"-->
+<!--&lt;!&ndash;              action="om_hospital19.action_hospital_appointment"/>&ndash;&gt;-->
+
+   
+    <!-- remove the  report for the sale  which do not show on the -->
+    <!--    <record id="sale.action_report_saleorder" model="ir.actions.report">-->
+    <!--        <field name="binding_model_id" eval="False"/>-->
+    <!--        <field name="binding_type">report</field>-->
+    <!--    </record>-->
+
+
+</odoo>

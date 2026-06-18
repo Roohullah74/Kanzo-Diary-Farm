@@ -1,0 +1,269 @@
+<odoo>
+    <data>
+        <!--        <record id="action_create_appointments_server" model="ir.actions.server">-->
+        <!--            <field name="name">Creat Appointment</field>-->
+        <!--            <field name="type">ir.actions.server</field>-->
+        <!--            <field name="model_id" ref="om_hospital19.model_hospital_patient"/>-->
+        <!--            <field name="binding_model_id" ref="om_hospital19.model_hospital_patient"/>-->
+        <!--            <field name="binding_view_types">list,form</field>-->
+        <!--            <field name="state">code</field>-->
+        <!--            <field name="code">-->
+        <!--                action_value = env.ref('om_hospital19.action_hospital_patient').sudo().read()[0]-->
+        <!--                action_value.update({-->
+        <!--                'context':dict(env.context),-->
+        <!--                })-->
+        <!--                action = action_value-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <!-- ==================== KANBAN VIEW ==================== -->
+        <record id="view_patient_kanban" model="ir.ui.view">
+            <field name="name">hospital.patient.kanban</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <kanban default_order="id asc">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="doctor_id"/>
+                    <field name="reference"/>
+                    <field name="gender"/>
+                    <field name="age"/>
+                    <field name="note"/>
+                    <field name="doctor_id"/>
+
+                    <field name="image"/>
+
+                    <templates>
+                        <t t-name="card">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            <strong>ID:</strong>
+                                            <field name="reference"/>
+                                        </li>
+                                        <li>
+                                            <strong>Name:</strong>
+                                            <field name="name"/>
+                                        </li>
+                                        <li>
+                                            <strong>Age:</strong>
+                                            <field name="age"/>
+                                        </li>
+                                        <li>
+                                            <strong>Gender:</strong>
+                                            <field name="gender"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- ==================== LIST (TREE) VIEW ==================== -->
+        <record id="view_patient_list" model="ir.ui.view">
+            <field name="name">hospital.patient.list</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <list>
+                    <!--                    expand="1"-->
+                    <field name="reference"/>
+                    <field name="name"/>
+                    <field name="doctor_id"/>
+
+                    <field name="responsible_id"/>
+                    <field name="gender"/>
+                    <field name="age"/>
+                    <field name="note"/>
+                    <field name="appointment_count"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- ==================== FORM VIEW ==================== -->
+        <record id="view_patient_form" model="ir.ui.view">
+            <field name="name">hospital.patient.form</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object"
+                                class="btn-primary"
+                                invisible="state != 'draft'"
+                                confirm="Are you sure you want to confirm?"/>
+
+                        <button name="action_done" string="Mark As Done" type="object"
+                                class="btn-primary"
+                                invisible="state != 'confirm'"/>
+
+                        <button name="action_draft" string="Set To Draft" type="object"
+                                class="btn-primary"
+                                invisible="state != 'cancel'"/>
+
+                        <button name="action_cancel" string="Cancel" type="object"
+                                invisible="state not in ['draft', 'confirm', 'done']"
+                                confirm="Are you sure you want to cancel?"/>
+                        <button id="button_create_appointment"
+                                name="%(action_create_appointment)d"
+                                string="Create Appointment"
+                                type="action"
+                                class="btn-primary"/>
+
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirm,done,cancel"/>
+                    </header>
+
+                    <sheet>
+
+                        <!-- RIBBON -->
+                        <widget name="web_ribbon"
+                                title="Done"
+                                bg_color="text-bg-success o_ribbon_blink"
+                                invisible="state != 'done'"/>
+                        <!--                        <widget name="web_ribbon" title="Done" bg_color="text-bg-success" invisible="state != 'done'"/>-->
+
+
+                        <!--                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-success" invisible="active"/>-->
+                        <!-- Button Box -->
+                        <div class="oe_button_box" name="button_box">
+
+                            <!-- Existing Appointment Button -->
+                            <button name="action_open_appointments" type="object"
+                                    class="oe_stat_button" icon="fa-calendar">
+                                <div class="o_stat_info">
+                                    <field name="appointment_count" class="o_stat_value"/>
+                                    <span class="o_stat_text">Appointments</span>
+                                </div>
+                            </button>
+
+                            <!-- ✅ Product Smart Button -->
+                            <!--                            <button name="action_open_products" type="object"-->
+                            <!--                                    class="oe_stat_button" icon="fa-cube">-->
+                            <!--                                <div class="o_stat_info">-->
+                            <!--                                    <field name="product_count" class="o_stat_value"/>-->
+                            <!--                                    <span class="o_stat_text">Products</span>-->
+                            <!--                                </div>-->
+                            <!--                            </button>-->
+                            <!--✅ 4. Add Smart Button invsety stock-->
+                            <button name="action_open_inventory" type="object"
+                                    class="oe_stat_button" icon="fa-cubes">
+                                <div class="o_stat_info">
+                                    <field name="stock_move_count" class="o_stat_value"/>
+                                    <span class="o_stat_text">Inventory</span>
+                                </div>
+                            </button>
+
+                        </div>
+
+                        <!--image add int form field-->
+                        <field name="image" widget="image" class="oe_avatar oe_right"/>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="reference" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="doctor_id"/>
+
+                                <field name="responsible_id"/>
+
+                                <field name="age"/>
+
+                                <field name="appointment_count"/>
+                            </group>
+                            <group>
+                                <field name="gender"/>
+                                <field name="note"/>
+
+                                <!--                                <field name="active"/>-->
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Appointments" name="appointment">
+                                <field name="appointment_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- ==================== SEARCH VIEW (Fixed for Odoo 19) ==================== -->
+        <record id="view_patient_search" model="ir.ui.view">
+            <field name="name">hospital.patient.search</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <search string="Patients">
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="responsible_id"/>
+                    <field name="gender"/>
+                    <field name="age"/>
+
+                    <separator/>
+
+                    <!-- Filters -->
+                    <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
+                    <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
+                    <filter string="Other" name="other" domain="[('gender', '=', 'other')]"/>
+
+                    <separator/>
+
+                    <!-- Group By -->
+                    <filter string="Gender" name="group_by_gender" context="{'group_by': 'gender'}"/>
+                    <filter string="Responsible" name="group_by_responsible" context="{'group_by': 'responsible_id'}"/>
+                    <filter string="Name" name="group_by_name" context="{'group_by': 'name'}"/>
+                    <searchpanel>
+                        <!--                        <field name="category_id" select="multi" string="Categories" icon="fa-cutlery" color="#875A7B"-->
+                        <!--                               enable_counters="1"/>-->
+                        <field name="gender" string="Gender" icon="fa-user" color="red"/>
+                        <field name="state" string="Status" select="multi" enable_counters="4" icon="fa-lock"
+                               color="black"/>
+                    </searchpanel>
+
+                </search>
+            </field>
+        </record>
+
+        <!-- ==================== ACTION ==================== -->
+        <record id="action_hospital_patient" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="view_mode">list,form,kanban</field>
+            <field name="search_view_id" ref="view_patient_search"/>
+            <field name="context">{'search_default_male': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first patient!
+                </p>
+            </field>
+        </record>
+
+        <!-- ==================== MENU ITEMS ==================== -->
+        <menuitem id="menu_hospital_root"
+                  name="Hospital"
+                  sequence="10"/>
+
+        <menuitem id="menu_patient_root"
+                  name="Patients"
+                  parent="menu_hospital_root"
+                  sequence="10"/>
+
+        <menuitem id="menu_patient"
+                  name="Patients"
+                  parent="menu_patient_root"
+                  action="action_hospital_patient"
+                  sequence="10"/>
+
+    </data>
+</odoo>

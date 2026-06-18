@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_partner_form_inherit_buyer" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.buyer</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='parent_id']" position="before">
+                <field name="user_id"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
+        <!--<record id="view_order_list_inherit" model="ir.ui.view">-->
+        <!--<field name="name">sale.order.list.inherited</field>-->
+        <!--<field name="model">sale.order</field>-->
+        <!--<field name="inherit_id" ref="sale.view_quotation_tree"/>-->
+        <!--<field name="arch" type="xml">-->
+        <!--    <xpath expr="//field[@name='partner_id']" position="after">-->
+        <!--        <field name="sale_description"/>-->
+        <!--    </xpath>-->
+        <!--</field>-->
+        <!--</record>-->

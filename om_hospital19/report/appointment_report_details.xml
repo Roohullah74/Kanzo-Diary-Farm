@@ -1,0 +1,312 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <template id="report_appointment_details">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-call="web.external_layout">-->
+<!--                <div class="page">-->
+
+<!--                    &lt;!&ndash; Report Title &ndash;&gt;-->
+<!--                    <h2 style="text-align:center; color:#2c3e50; margin-bottom:20px;">-->
+<!--                        Appointment Report-->
+<!--                    </h2>-->
+
+<!--                    &lt;!&ndash; Filter Summary &ndash;&gt;-->
+<!--                    <div style="margin-bottom:20px; font-size:13px;-->
+<!--                                padding:10px; border:1px solid #ddd;-->
+<!--                                border-radius:5px; background:#f9f9f9;">-->
+<!--                        <strong>Patient:</strong>-->
+<!--                        <t t-out="env.context.get('patient_name', 'All Patients')"/>-->
+<!--                        <br/>-->
+<!--                        <strong>From:</strong>-->
+<!--                        <t t-out="env.context.get('date_from', '-')"/>-->
+<!--                        <br/>-->
+<!--                        <strong>To:</strong>-->
+<!--                        <t t-out="env.context.get('date_to', '-')"/>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Appointments Table &ndash;&gt;-->
+<!--                    <table class="table table-sm table-bordered">-->
+<!--                        <thead style="background-color:#2c3e50; color:white;">-->
+<!--                            <tr>-->
+<!--                                <th style="color:white;">Reference</th>-->
+<!--                                <th style="color:white;">Patient</th>-->
+<!--                                <th style="color:white;">Age</th>-->
+<!--                                <th style="color:white;">Doctor</th>-->
+<!--                                <th style="color:white;">Gender</th>-->
+<!--                                <th style="color:white;">Date</th>-->
+<!--                                <th style="color:white;">Checkup Time</th>-->
+<!--                                <th style="color:white;">Status</th>-->
+<!--                                <th style="color:white;">Note</th>-->
+<!--                                <th style="color:white;">Appointment Count</th>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            <t t-foreach="docs" t-as="o">-->
+<!--                                &lt;!&ndash; Main appointment row &ndash;&gt;-->
+<!--                                <tr>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.name"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.patient_id"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.age"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.doctor_id"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.gender"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.date_appointment"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.date_checkup"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.state"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.note"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.patient_id.appointment_count"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                &lt;!&ndash; Prescription lines row &ndash;&gt;-->
+<!--                                <t t-if="o.prescription_line_ids">-->
+<!--                                    <tr style="background:#f9f9f9;">-->
+<!--                                        <td colspan="9">-->
+<!--                                            <strong>Prescriptions:</strong>-->
+<!--                                            <t t-foreach="o.prescription_line_ids" t-as="p">-->
+<!--                                                <span t-out="p.name"/>-->
+<!--                                                (Qty:<span t-out="p.qty"/>)-->
+<!--                                                <t t-if="not p_last">|</t>-->
+<!--                                            </t>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                </t>-->
+<!--                            </t>-->
+
+<!--                            &lt;!&ndash; Total row &ndash;&gt;-->
+<!--                            <tr style="color:white;">-->
+<!--                                <td colspan="8">-->
+<!--                                    <strong>Total Appointments</strong>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <strong>-->
+<!--                                        <t t-out="len(docs)"/>-->
+<!--                                    </strong>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+
+<!--                </div>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+
+<!--        &lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+<!--        &lt;!&ndash;<odoo>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <template id="report_appointment_details">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <t t-call="web.html_container">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <t t-call="web.external_layout">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="page">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                    <h2 style="text-align:center; color:#2c3e50; margin-bottom:20px;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        Appointment Report&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </h2>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                    &lt;!&ndash; Filter Summary (Dynamic) &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div style="margin-bottom:15px; font-size:13px;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <t t-if="data.get('patient_name')">&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <strong>Patient:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <t t-esc="data.get('patient_name')"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </t>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <t t-if="data.get('date_from')">&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <strong>From:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <t t-esc="data.get('date_from')"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </t>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <t t-if="data.get('date_to')">&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <strong>To:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <t t-esc="data.get('date_to')"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                    &lt;!&ndash; Table &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <table class="table table-sm table-bordered">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <thead style="background-color:#2c3e50; color:white;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Reference</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Patient</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Age</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Doctor</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Gender</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Date</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Checkup Time</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Status</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th>Note</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </thead>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <tbody>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            <t t-foreach="docs" t-as="o">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Reference &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.name"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Patient &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.patient_id"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Age &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.age"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Doctor &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.doctor_id"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Gender &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.gender"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Date &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.date_appointment"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Checkup &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.date_checkup"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Status &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.state"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                    &lt;!&ndash; Note &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <span t-field="o.note"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                &lt;!&ndash; Prescription Lines &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <td colspan="9">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <strong>Prescriptions:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <ul>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                            <t t-foreach="o.prescription_line_ids" t-as="p">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                <li>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <t t-esc="p.name"/> - &ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    Qty: <t t-esc="p.qty"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                </li>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                            </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        </ul>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            </t>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            &lt;!&ndash; Total Row &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <tr style="background-color:#f2f2f2;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td colspan="8">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <strong>Total Appointments</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <t t-esc="len(docs)"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        </tbody>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </table>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </template>&ndash;&gt;-->
+<!--        &lt;!&ndash;</odoo>&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash; -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--        &lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+<!--        &lt;!&ndash;<odoo>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <template id="report_appointment_details">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <t t-call="web.html_container">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <t t-call="web.external_layout">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="page">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                    <h2 style="text-align:center; color:#2c3e50; margin-bottom:20px;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        Appointment Report&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </h2>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                    &lt;!&ndash; Filter summary static &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div style="margin-bottom:15px; margin-top:50px; font-size:13px;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <strong>Patient:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        John Doe&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <strong>From:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        2026-01-01&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <strong>To:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        2026-04-01&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                    &lt;!&ndash; Static table &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <table class="table table-sm table-bordered">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <thead style="background-color:gray; color:white;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th style="color:white">Reference</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th style="color:white">Patient</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th style="color:white">Doctor</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th style="color:white">Date</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <th style="color:white">Status</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </thead>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <tbody>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td>HA00001</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td>John Doe</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td>Dr. Smith</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td>2026-01-05</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td>Confirmed</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            &lt;!&ndash; Total row &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <tr style="background-color:#f2f2f2;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td colspan="2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <strong>Total Appointments</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <strong>10</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </tbody>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </table>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </template>&ndash;&gt;-->
+<!--        &lt;!&ndash;</odoo>&ndash;&gt;-->

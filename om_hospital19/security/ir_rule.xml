@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- USER: sees ONLY own patients -->
+        <record id="rule_patient_user" model="ir.rule">
+            <field name="name">Patient: User sees own only</field>
+            <field name="model_id" ref="om_hospital19.model_hospital_patient"/>
+            <field name="groups" eval="[(4, ref('om_hospital19.group_custom_user'))]"/>
+            <field name="domain_force">[('doctor_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- USER: sees ONLY own appointments -->
+        <record id="rule_appointment_user" model="ir.rule">
+            <field name="name">Appointment: User sees own only</field>
+            <field name="model_id" ref="om_hospital19.model_hospital_appointment"/>
+            <field name="groups" eval="[(4, ref('om_hospital19.group_custom_user'))]"/>
+            <field name="domain_force">[('doctor_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ASSISTANT MANAGER: Read Only, sees ALL records -->
+        <record id="rule_patient_assistant" model="ir.rule">
+            <field name="name">Patient: Assistant sees all</field>
+            <field name="model_id" ref="om_hospital19.model_hospital_patient"/>
+            <field name="groups" eval="[(4, ref('om_hospital19.group_custom_assistant_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- MANAGER: sees ALL records + full control -->
+        <record id="rule_patient_manager" model="ir.rule">
+            <field name="name">Patient: Manager full access</field>
+            <field name="model_id" ref="om_hospital19.model_hospital_patient"/>
+            <field name="groups" eval="[(4, ref('om_hospital19.group_custom_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
+
+
+        <!--id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink-->
+        <!--access_create_appointment_wizard,access.create.appointment.wizard,model_create_appointment_wizard,group_custom_user,1,1,1,1-->
+        <!--access_search_appointment_wizard,access.search.appointment.wizard,model_search_appointment_wizard,group_custom_user,1,1,1,1-->
+        <!--access_appointment_report_wizard,access.appointment.report.wizard,model_appointment_report_wizard,group_custom_user,1,1,1,1-->
+        <!--access_patient_report_wizard,access.patient.report.wizard,model_patient_report_wizard,group_custom_user,1,1,1,1-->
+        <!--access_hospital_patient_user,access.hospital.patient.user,model_hospital_patient,group_custom_user,1,1,1,0-->
+        <!--access_hospital_doctor_user,access.hospital.doctor.user,model_hospital_doctor,group_custom_user,1,1,1,0-->
+        <!--access_hospital_appointment_user,access.hospital.appointment.user,model_hospital_appointment,group_custom_user,1,1,1,0-->
+        <!--access_appointment_prescription_lines_user,access.appointment.prescription.lines.user,model_appointment_prescription_lines,group_custom_user,1,1,1,0-->
+        <!--access_res_partner_hospital_user,access.res.partner.hospital.user,model_res_partner,group_custom_user,1,1,1,0-->
+        <!--access_hospital_patient_assistant,access.hospital.patient.assistant,model_hospital_patient,group_custom_assistant_manager,1,1,1,0-->
+        <!--access_hospital_doctor_assistant,access.hospital.doctor.assistant,model_hospital_doctor,group_custom_assistant_manager,1,1,1,0-->
+        <!--access_hospital_appointment_assistant,access.hospital.appointment.assistant,model_hospital_appointment,group_custom_assistant_manager,1,1,1,0-->
+        <!--access_hospital_patient_manager,access.hospital.patient.manager,model_hospital_patient,group_custom_manager,1,1,1,1-->
+        <!--access_hospital_doctor_manager,access.hospital.doctor.manager,model_hospital_doctor,group_custom_manager,1,1,1,1-->
+        <!--access_hospital_appointment_manager,access.hospital.appointment.manager,model_hospital_appointment,group_custom_manager,1,1,1,1-->
+        <!--access_appointment_prescription_lines_manager,access.appointment.prescription.lines.manager,model_appointment_prescription_lines,group_custom_manager,1,1,1,1-->
+
+
+        <!--<?xml version="1.0" encoding="utf-8"?>-->
+        <!--<odoo>-->
+        <!--    <data>-->
+
+        <!--        &lt;!&ndash; Doctor sees ONLY his own patients &ndash;&gt;-->
+        <!--        <record id="rule_doctor_own_patients" model="ir.rule">-->
+        <!--            <field name="name">Doctor: Own Patients Only</field>-->
+        <!--            <field name="model_id" ref="model_hospital_patient"/>-->
+        <!--            <field name="groups" eval="[(4, ref('om_hospital19.group_hospital_doctor'))]"/>-->
+        <!--            &lt;!&ndash; ✅ This connects logged-in user → doctor → patient &ndash;&gt;-->
+
+        <!--            <field name="domain_force">[('doctor_id.user_id', '=', user.id)]</field>-->
+        <!--            <field name="perm_read" eval="True"/>-->
+        <!--            <field name="perm_write" eval="True"/>-->
+        <!--            <field name="perm_create" eval="True"/>-->
+        <!--            <field name="perm_unlink" eval="False"/>-->
+        <!--        </record>-->
+
+        <!--        &lt;!&ndash; Admin sees ALL patients — no rule needed, admin bypasses all rules &ndash;&gt;-->
+
+        <!--    </data>-->
+        <!--</odoo>-->
+
+        <!--oldddd-->
+
+        <!--id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink-->
+        <!--access_create_appointment_wizard,access.create.appointment.wizard,model_create_appointment_wizard,,1,1,1,1-->
+        <!--access_search_appointment_wizard,access.search.appointment.wizard,model_search_appointment_wizard,,1,1,1,1-->
+        <!--access_appointment_report_wizard,access.appointment.report.wizard,model_appointment_report_wizard,,1,1,1,1-->
+        <!--access_patient_doctor,patient.doctor,model_hospital_patient,om_hospital19.group_hospital_doctor,1,1,1,1-->
+        <!--access_hospital_patient_admin,patient.admin,model_hospital_patient,base.group_system,1,1,1,1-->
+        <!--access_patient_doctor,patient.doctor,model_hospital_doctor,,1,1,1,1-->
+        <!--access_patient_report_wizard,access.patient.report.wizard,model_patient_report_wizard,,1,1,1,1-->
+        <!--access_hospital_patient_readonly,access.hospital.patient.readonly,model_hospital_patient,,1,1,1,1-->
+        <!--access_res_partner,access.res.partner,model_res_partner,,1,1,1,1-->
+        <!--access_hospital_appointment,access.hospital.appointment,model_hospital_appointment,,1,1,1,1-->
+        <!--access_appointment_prescription_lines,access.appointment.prescription.lines,model_appointment_prescription_lines,,1,1,1,1-->
+        <!--access_sale_order,access.sale.order,model_sale_order,,1,1,1,1-->
+        <!--access_stock_move,access.stock.move,model_stock_move,,1,1,1,1-->
+
+
+        <!--<?xml version="1.0" encoding="utf-8"?>-->
+        <!--<odoo>-->
+
+
+        <!--&lt;!&ndash;     Doctor can see only his own patients&ndash;&gt;-->
+        <!--    <record id="doctor_patient_rule" model="ir.rule">-->
+        <!--        <field name="name">Doctor Own Patients Only</field>-->
+
+        <!--        &lt;!&ndash; Apply rule on hospital.patient model &ndash;&gt;-->
+        <!--        <field name="model_id" ref="model_hospital_patient"/>-->
+
+        <!-- Show only patients assigned to logged-in doctor -->
+        <!--                <field name="domain_force">-->
+        <!--                    [('doctor_id', '=', user.id)]-->
+        <!--                </field>-->
+
+        <!--        &lt;!&ndash; Apply only to Doctor group &ndash;&gt;-->
+        <!--        <field name="groups"-->
+        <!--               eval="[(4, ref('om_hospital19.group_hospital_doctor'))]"/>-->
+        <!--    </record>-->
+
+
+        <!--</odoo>-->
+

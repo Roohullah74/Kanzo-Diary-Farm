@@ -1,0 +1,56 @@
+<!--<odoo>-->
+<!--    <template id="move_buyer_in_po_report"-->
+<!--              inherit_id="purchase.report_purchaseorder_document">-->
+
+<!--        &lt;!&ndash; ❌ Remove Buyer from original position &ndash;&gt;-->
+<!--&lt;!&ndash;        <xpath expr="//strong[contains(text(),'Buyer')]/.." position="replace"/>&ndash;&gt;-->
+
+<!--        &lt;!&ndash; ✅ Add Buyer after Vendor (Partner) &ndash;&gt;-->
+<!--        <xpath expr="//t[@t-set='information_block']" position="after">-->
+<!--            <div>-->
+<!--                <strong>Buyer:</strong>-->
+<!--                <div t-field="o.user_id"/>-->
+<!--            </div>-->
+<!--        </xpath>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+
+        <!--<odoo>-->
+        <!--    <template id="hide_buyer_in_po_report"-->
+        <!--              inherit_id="purchase.report_purchaseorder_document">-->
+
+        <!--        &lt;!&ndash; remove Buyer block &ndash;&gt;-->
+        <!--        <xpath expr="//strong[normalize-space()='Buyer']/.." position="replace"/>-->
+
+        <!--    </template>-->
+        <!--</odoo>-->
+
+
+        <!--<odoo>-->
+        <!--  <template id="move_buyer_below_contact" inherit_id="purchase.report_purchaseorder_document">-->
+
+        <!--    &lt;!&ndash; STEP 1: Remove the Buyer block from its original position (top right area) &ndash;&gt;-->
+        <!--    <xpath expr="//div[contains(@class,'row')]//t[@t-if='object.user_id']" position="replace"/>-->
+
+        <!--    &lt;!&ndash; STEP 2: Add Buyer block BELOW the contact name/phone in the shipping address area &ndash;&gt;-->
+        <!--    <xpath expr="//div[@class='row']/div[contains(.,'user_id') or contains(.,'Buyer')]" position="after">-->
+        <!--      <div class="col-auto">-->
+        <!--        <t t-if="object.user_id">-->
+        <!--          <strong>Buyer</strong><br/>-->
+        <!--          <span t-field="object.user_id.name"/>-->
+        <!--        </t>-->
+        <!--      </div>-->
+        <!--    </xpath>-->
+
+        <!--  </template>-->
+        <!--</odoo>-->
+
+        <!--hiding the field and in report-->
+        <!--<odoo>-->
+        <!--    <template id="purchase_report_hide_buyer" inherit_id="purchase.report_purchaseorder_document">-->
+        <!--        &lt;!&ndash; Hide the Buyer (user_id) label and value &ndash;&gt;-->
+        <!--        <xpath expr="//div[contains(@class,'row')]//t[@t-if='doc.user_id']" position="replace">-->
+        <!--        </xpath>-->
+        <!--    </template>-->
+        <!--</odoo>-->

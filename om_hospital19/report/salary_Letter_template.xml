@@ -1,0 +1,217 @@
+<!--<odoo>-->
+<!--    <template id="salary_letter_template">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-call="web.external_layout">-->
+<!--                <t t-foreach="docs" t-as="o">-->
+<!--                    <div class="page"-->
+<!--                         style="font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; color: #000;">-->
+
+<!--                        <div style="text-align: center; margin-bottom: 20px;">-->
+<!--                            <h3 style="text-transform: uppercase; text-decoration: underline;">-->
+<!--                                <strong>Request for Salary Transfer of Employees</strong>-->
+<!--                            </h3>-->
+<!--                        </div>-->
+
+<!--                        <div style="margin-bottom: 20px;">-->
+<!--                            <p>-->
+<!--                                To-->
+<!--                                <br/>-->
+<!--                                <strong>The Manager</strong>-->
+<!--                                <br/>-->
+<!--                                Meezan Bank Peco Road, Lahore.-->
+<!--                            </p>-->
+<!--                        </div>-->
+
+<!--                        <div style="margin-bottom: 20px;">-->
+<!--                            <p>-->
+<!--                                <strong>Subject: Request for Salary Transfer of Employees of NRTC Energies (Private)-->
+<!--                                    Limited-->
+<!--                                </strong>-->
+<!--                                [cite: 5]-->
+<!--                            </p>-->
+<!--                        </div>-->
+
+<!--                        <div style="margin-bottom: 20px; text-align: justify; line-height: 1.5;">-->
+<!--                            <p>-->
+<!--                                It is requested that our employees whose details have been mentioned below work with-->
+<!--                                <strong>NRTC Energies (Private) Limited</strong>. I request you to kindly transfer the-->
+<!--                                salary to-->
+<!--                                their respective accounts through the company's-->
+<!--                                <strong>A/C 1158-0105831693</strong>.-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                                Cheque No.-->
+<!--                                <strong>987654</strong>-->
+<!--                            </p>-->
+<!--                        </div>-->
+
+<!--                        <table style="width: 100%;border: 1px solid black; border-radius: 10px;">-->
+<!--                            <thead>-->
+<!--                                <tr style="background-color: #f2f2f2;">-->
+<!--                                    <th style="border: 1px solid black; padding: 8px; text-align: center;">SR. NO.</th>-->
+<!--                                    <th style="border: 1px solid black; padding: 8px; text-align: left;">DESIGNATION-->
+<!--                                    </th>-->
+<!--                                    <th style="border: 1px solid black; padding: 8px; text-align: left;">EMPLOYEE NAME-->
+<!--                                    </th>-->
+<!--                                    <th style="border: 1px solid black; padding: 8px; text-align: center;">BANK ACCOUNT-->
+<!--                                        NO.-->
+<!--                                    </th>-->
+<!--                                    <th style="border: 1px solid black; padding: 8px; text-align: right;">NET SALARY-->
+<!--                                    </th>-->
+<!--                                </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                                <tr>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px; text-align: center;">1</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px;">100113</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px;">Javad Anjum</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px; text-align: center;">12345678</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px; text-align: right;">-370.00</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px; text-align: center;">2</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px;">100149</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px;">Altaf Ali</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px; text-align: center;">23456</td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px; text-align: right;">149,630.00-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </tbody>-->
+<!--                            <tfoot>-->
+<!--                                <tr>-->
+<!--                                    <td colspan="4" style="border: 1px solid black; padding: 8px; text-align: right;">-->
+<!--                                        <strong>Grand Total</strong>-->
+<!--                                    </td>-->
+<!--                                    <td style="border: 1px solid black; padding: 8px; text-align: right;">-->
+<!--                                        <strong>149,495.00</strong>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </tfoot>-->
+<!--                        </table>-->
+
+<!--                        <div style="margin-top: 50px;">-->
+<!--                            <p>-->
+<!--                                <strong>NRTC ENERGIES PRIVATE LIMITED</strong>-->
+<!--                                [cite: 10]-->
+<!--                                <br/>-->
+<!--                                <span style="font-size: 12px;">-->
+<!--                                    72 Block, PECO Road, Lahore, Pakistan [cite: 11]-->
+<!--                                    <br/>-->
+<!--                                    Ph: +92 42 3511 7304 | +92 33 6782 6782 [cite: 12]-->
+<!--                                    <br/>-->
+<!--                                    Email: ali.raza@nrtcenergies.com | www.nrtcenergies.com [cite: 12, 13]-->
+<!--                                </span>-->
+<!--                            </p>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+<!--        &lt;!&ndash;<odoo>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <template id="salary_letter">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <t t-call="web.external_layout">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="page">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                &lt;!&ndash; Title &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                <h3 style="text-align:center;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <strong>Request for Salary Transfer of Employees</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </h3>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                <br/>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                &lt;!&ndash; To Section &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                <p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    To<br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    The Manager<br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    Meezan Bank Peco Road, Lahore.&ndash;&gt;-->
+<!--        &lt;!&ndash;                </p>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                <br/>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                &lt;!&ndash; Subject &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                <p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <strong>Subject: Request for Salary Transfer of Employees of NRTC Energies (Private) Limited</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </p>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                &lt;!&ndash; Body &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                <p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    It is requested that our employees whose details have been mentioned below work with&ndash;&gt;-->
+<!--        &lt;!&ndash;                    NRTC Energies (Private) Limited. I request you to kindly transfer the salary to their&ndash;&gt;-->
+<!--        &lt;!&ndash;                    respective accounts through the company's A/C <strong>1158-0105831693</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </p>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                <p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    Cheque No. <strong>987654</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </p>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                &lt;!&ndash; Table &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                <table style="width:100%; border:1px solid black;" border="1">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <thead>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <th>SR. NO.</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <th>DESIGNATION</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <th>EMPLOYEE NAME</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <th>BANK ACCOUNT NO.</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <th>NET SALARY</th>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </thead>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <tbody>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>1</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>100113</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>Javad Anjum</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>12345678</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>-370.00</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>2</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>100149</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>Altaf Ali</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>23456</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>149,630.00</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>3</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>Administrator</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>-</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>3520129402093</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>605.00</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>4</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>100030</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>Ahmad Ali Gulzai</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>2345678765432</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td>-370.00</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </tr>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        &lt;!&ndash; Total &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td colspan="4"><strong>Grand Total</strong></td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <td><strong>149,495.00</strong></td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </tbody>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </table>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                <br/><br/>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                &lt;!&ndash; Footer &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                <p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <strong>NRTC ENERGIES PRIVATE LIMITED</strong><br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    72 Block, PECO Road, Lahore, Pakistan<br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    +92 42 3511 7304 | +92 33 6782 6782<br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    www.nrtcenergies.com<br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    ali.raza@nrtcenergies.com&ndash;&gt;-->
+<!--        &lt;!&ndash;                </p>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </template>&ndash;&gt;-->
+<!--        &lt;!&ndash;</odoo>&ndash;&gt;-->

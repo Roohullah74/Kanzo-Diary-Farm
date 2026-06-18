@@ -1,0 +1,165 @@
+<!--<odoo>-->
+<!--    <template id="report_employee_details">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <div class="page" style="margin: 100px">-->
+<!--                <h1>EMPLOYEE CLEARANCE FORM</h1>-->
+<!--                <h2>Employee Information:</h2>-->
+<!--                &lt;!&ndash;                <p>Employee Name: <u>Abigail Peterson</u> &emsp;&emsp; Department:&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <u>Professional Services</u>&ndash;&gt;-->
+<!--                &lt;!&ndash;-->
+<!--                           </p>&ndash;&gt;-->
+<!--                <table style="width: 100%;">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <strong>Employee Name:</strong>-->
+<!--                            <u>Abigail Peterson</u>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <strong>Department:</strong>-->
+<!--                            <u>Professional Services</u>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+
+<!--                </table>-->
+<!--                &lt;!&ndash;                <div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <p>Employee Name:&ndash;&gt;-->
+<!--                &lt;!&ndash;                            <u>Abigail Peterson</u>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        </p>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <p>Department:&ndash;&gt;-->
+<!--                &lt;!&ndash;                            <u>Professional Services</u>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        </p>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
+
+
+<!--                <p>Position: <u>Abigail Peterson</u>Date of Resignation:-->
+<!--                    <u></u>-->
+<!--                </p>-->
+<!--                <h4>Clearance Checklist</h4>-->
+<!--                <p>-->
+<!--                    <b>Please complete the following sections by obtaining signatures from the relevant departments.</b>-->
+<!--                </p>-->
+<!--                <table style="width: 100%;">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <strong>1. Direct Supervisor/Manager</strong>-->
+<!--                        </td>-->
+
+<!--                        <td style="text-align: right;">-->
+<!--                            <strong>Supervisor Signature:-->
+<!--                                <span style="border-bottom: 1px solid black; display: inline-block; width: 200px;"></span>-->
+<!--                            </strong>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                - [ ] Work handover completed-->
+<!--                <br/>-->
+<!--                - [ ] Final performance evaluation (if applicable)-->
+<!--                <table style="width:100%">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <strong>2. Admin Department</strong>-->
+<!--                        </td>-->
+<!--                        <td style="text-align: right;">-->
+<!--                            <strong>-->
+<!--                                Admin Signature:-->
+<!--                                <span style="border-bottom:1px solid black; display:inline-block; width:200px"></span>-->
+<!--                            </strong>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                - [ ] Return of company devices (laptop, phone, etc.)-->
+<!--                <br/>-->
+<!--                - [ ] Return of access cards/keys/Sim etc.-->
+<!--                <br/>-->
+<!--                - [ ] Office space cleared-->
+<!--                <table style="width:100%;">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <strong>3. IT Department</strong>-->
+<!--                        </td>-->
+
+<!--                        <td style="text-align: right;">-->
+<!--                            <strong>-->
+<!--                                IT Signature:-->
+<!--                                <span style="border-bottom:1px solid black; display:inline-block; width:200px;"></span>-->
+<!--                            </strong>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                - [ ] Access to systems and accounts revoked-->
+<!--                <br/>-->
+<!--                - [ ] Data transfer completed (if applicable)-->
+
+<!--                <table style="width:100%;">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <strong>3. HR Department</strong>-->
+<!--                        </td>-->
+
+<!--                        <td style="text-align: right;">-->
+<!--                            <strong>-->
+<!--                                HR Signature:-->
+<!--                                <span style="border-bottom:1px solid black; display:inline-block; width:200px;"></span>-->
+<!--                            </strong>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                - [ ] Final paycheck processed-->
+<!--                <br/>-->
+<!--                - [ ] Exit interview conducted-->
+<!--                <table style="width:100%;">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <strong>5. Finance Department</strong>-->
+<!--                        </td>-->
+
+<!--                        <td style="text-align: right;">-->
+<!--                            <strong>-->
+<!--                                Finance Signature:-->
+<!--                                <span style="border-bottom:1px solid black; display:inline-block; width:200px;"></span>-->
+<!--                            </strong>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                - [ ] Any outstanding loans or advances cleared-->
+<!--                <br/>-->
+<!--                - [ ] Reimbursement requests submitted-->
+<!--                <br/>-->
+<!--                <br/>-->
+<!--                <br/>-->
+<!--                <table style="width:100%;">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <strong>-->
+<!--                                Date:-->
+<!--                                <span style="border-bottom:1px solid black; display:inline-block; width:200px;"></span>-->
+<!--                            </strong>-->
+<!--                        </td>-->
+
+<!--                        <td style="text-align: right;">-->
+<!--                            <strong>Employee</strong>-->
+<!--                        </td>-->
+
+
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                <div>-->
+<!--                    <tr>-->
+<!--                        <strong>Employee Signature:</strong>-->
+<!--                    </tr>-->
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash;                <div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <h1>hdhshkdhd</h1>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--            </div>-->
+
+
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->

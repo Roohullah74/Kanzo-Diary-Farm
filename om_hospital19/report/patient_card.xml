@@ -1,0 +1,206 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <template id="report_patient_id_card">-->
+
+<!--        <t t-call="web.external_layout">-->
+
+<!--            <div class="page" style="font-family: Arial; padding: 15px;">-->
+
+<!--                &lt;!&ndash; HEADER &ndash;&gt;-->
+<!--                <h2 style="text-align:center; color:#2c3e50; margin-bottom:20px;">-->
+<!--                    PATIENT DETAILS-->
+<!--                </h2>-->
+
+<!--                &lt;!&ndash; PATIENT CARD &ndash;&gt;-->
+<!--                <table style="width:100%; border:3px solid #2c3e50; border-collapse:collapse; margin-bottom:25px;">-->
+<!--                    <tr>-->
+<!--                        &lt;!&ndash; IMAGE &ndash;&gt;-->
+<!--                        <td style="width:30%; text-align:center; padding:15px; border-right:3px solid #2c3e50;">-->
+<!--                            <img t-if="o.image"-->
+<!--                                 t-att-src="'data:image/png;base64,' + o.image.decode('utf-8')"-->
+<!--                                 style="height:180px; width:150px; border:2px solid #34495e;"/>-->
+<!--                            <img t-else=""-->
+<!--                                 src="/web/static/src/img/placeholder.png"-->
+<!--                                 style="height:180px; width:150px; border:2px solid #34495e;"/>-->
+<!--                        </td>-->
+
+<!--                        &lt;!&ndash; DETAILS &ndash;&gt;-->
+<!--                        <td style="padding:20px;">-->
+<!--                            <table style="width:100%;">-->
+<!--                                <thead>-->
+<!--                                    <h4>-->
+<!--                                        <strong>Reference:</strong>-->
+<!--                                        <span t-field="o.reference"/>-->
+<!--                                    </h4>-->
+<!--                                </thead>-->
+<!--                                <tr>-->
+<!--                                    <td>-->
+<!--                                        <strong>Name:</strong>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.name"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>-->
+<!--                                        <strong>Age:</strong>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.age"/>-->
+<!--                                        Years-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>-->
+<!--                                        <strong>Reference:</strong>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <span t-field="o.reference"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+
+<!--                &lt;!&ndash; APPOINTMENT DETAILS &ndash;&gt;-->
+<!--                <h3 style="color:#2c3e50; margin-bottom:10px;">-->
+<!--                    Appointment Details-->
+<!--                </h3>-->
+
+<!--                <table style="width:100%; border-collapse:collapse; border:1px solid #ccc;">-->
+<!--                    <thead style="background:#ecf0f1;">-->
+<!--                        <tr>-->
+<!--                            <th style="padding:8px; border:1px solid #ccc;">Reference</th>-->
+<!--                            <th style="padding:8px; border:1px solid #ccc;">Age</th>-->
+<!--                            <th style="padding:8px; border:1px solid #ccc;">Doctor</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                        &lt;!&ndash; Loop appointments &ndash;&gt;-->
+<!--                        <tr t-foreach="o.appointment_ids" t-as="app">-->
+<!--                            <td style="padding:8px; border:1px solid #ccc;">-->
+<!--                                <span t-field="app.name"/>-->
+<!--                            </td>-->
+<!--                            <td style="padding:8px; border:1px solid #ccc;">-->
+<!--                                <span t-field="o.age"/>-->
+<!--                            </td>-->
+<!--                            <td style="padding:8px; border:1px solid #ccc;">-->
+<!--                                <span t-field="app.doctor_id"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+
+<!--                &lt;!&ndash; TOTAL &ndash;&gt;-->
+<!--                <p style="margin-top:10px; font-weight:bold;">-->
+<!--                    Total Appointments:-->
+<!--                    <span t-esc="len(o.appointment_ids)"/>-->
+<!--                </p>-->
+
+<!--            </div>-->
+
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+<!--        &lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+<!--        &lt;!&ndash;<odoo>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <template id="report_patient_id_card">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <t t-call="web.basic_layout">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="page">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                <h3 style="text-align:center;">Patient ID Card</h3>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <t t-foreach="docs" t-as="o">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div style="border:1px solid black; width:250px; padding:10px; margin:auto;">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <p><strong>Name:</strong> <span t-esc="o.name"/></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <p><strong>Reference:</strong> <span t-esc="o.reference"/></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <p><strong>Age:</strong> <span t-esc="o.age"/></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <p><strong>Gender:</strong> <span t-esc="o.gender"/></p>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </t>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </t>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;    </template>&ndash;&gt;-->
+<!--        &lt;!&ndash;</odoo>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;<odoo>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <template id="report_patient_id_card">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <t t-call="web.basic_layout">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="page">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <h3 style="text-align:center;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    patient id&ndash;&gt;-->
+<!--        &lt;!&ndash;                </h3>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <t t-foreach="docs" t-as="o">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div style="border:1px solid black; width:250px; padding:10px; margin:auto;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <p><strong>Name:</strong> <span t-esc="o.name"/></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <p><strong>Reference:</strong> <span t-esc="o.reference"/></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <p><strong>Age:</strong> <span t-esc="o.age"/></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <p><strong>Gender:</strong> <span t-esc="o.gender"/></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </template>&ndash;&gt;-->
+<!--        &lt;!&ndash;</odoo>&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash;<odoo>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <template id="report_patient_id_card">&ndash;&gt;-->
+<!--        &lt;!&ndash;        &lt;!&ndash; Odoo 19: must wrap in t-call="web.html_container" &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;        <t t-call="web.html_container">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <t t-foreach="docs" t-as="o">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <t t-call="web.basic_layout">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="page">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <div class="oe_structure"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <div class="row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                            &lt;!&ndash; Odoo 19: col-xs-8 → col-8 (Bootstrap 5) &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <div class="col-8">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                <table class="table table-condensed"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                       style="border: 3px solid black !important;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <td width="40%">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                            <p style="text-align:center;padding-top:10px;">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                <img t-if="not o.image"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                     t-att-src="'/web/static/src/img/placeholder.png'"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                     height="140" border="1" width="120"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                <img t-if="o.image"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                     t-att-src="'data:image/png;base64,%s' % to_text(o.image)"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                     height="140" border="1" width="120"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                            </p>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        <td width="60%">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                            <table>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <td colspan="3" class="text-center">&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                        <span t-field="o.name"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <td><strong>Age:</strong></td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <td>:</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <td><span t-field="o.age"/></td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                <tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <td><strong>Reference:</strong></td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <td>:</td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                    <td><span t-field="o.reference"/></td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                                </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                            </table>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                        </td>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                    </tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;                                </table>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </t>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </template>&ndash;&gt;-->
+<!--        &lt;!&ndash;</odoo>&ndash;&gt;-->

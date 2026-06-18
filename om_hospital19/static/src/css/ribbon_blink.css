@@ -1,0 +1,15 @@
+@keyframes blinkRibbon {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.o_ribbon_blink {
+    animation: blinkRibbon 1s infinite;
+}

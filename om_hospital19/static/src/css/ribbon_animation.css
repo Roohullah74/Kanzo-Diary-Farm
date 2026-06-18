@@ -1,0 +1,15 @@
+/*@keyframes fadeInRibbon {*/
+/*    0% {*/
+/*        opacity: 0;*/
+/*        transform: translateY(-10px) scale(0.9);*/
+/*    }*/
+/*    100% {*/
+/*        opacity: 1;*/
+/*        transform: translateY(0px) scale(1);*/
+/*    }*/
+/*}*/
+
+/*.o_ribbon,*/
+/*.o_web_ribbon {*/
+/*    animation: fadeInRibbon 0.6s ease-in-out;*/
+/*}*/
